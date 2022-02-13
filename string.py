@@ -1,7 +1,7 @@
 #string на несколько строк
 c = '''fwds
 dd'''
-print(c);
+print(c)
 
 b = "fg"
 print((b + 'kr') * 3)
