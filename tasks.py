@@ -138,11 +138,11 @@ print(n, body)
 '''
 '''
 number_str = input()
-first_part = number_str[:3]
-second_part = number_str[3:]
+first_part = number_str[:3] #3 символа слева
+second_part = number_str[3:] #3 символа справа
 s1 = 0
 s2 = 0
-for i in first_part:
+for i in first_part: #пройтись циклом по строке
     s1 += int(i)
 for i in second_part:
     s2 += int(i)
