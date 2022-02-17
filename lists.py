@@ -61,23 +61,35 @@ for i in listRes:
 Выводимые числа не должны повторяться, порядок их вывода может быть произвольным.
 '''
 list = [int(i) for i in input().split()]
-list.sort();
+list.sort(reverse=True)
 listRes = []
-counter = 0
-i = 0
-if len(list) != 1:
-    while counter < len(list) - 1:
-        if list[counter] == list[counter + 1]:
-            if len(listRes) > 0:
-                if listRes[len(listRes) - 1] != list[counter]:
-                    listRes.insert(len(listRes), list[counter])
+
+while len(list) > 0:
+    counter = 0
+    cnt = 1
+    while len(list) > 0:
+        if len(list) > 1:
+            if list[0] == list[1] and len(list) > 1:
+                cnt += 1
+                counter += 1
+                del list[0]
+            elif cnt > 1:
+                listRes.insert(0, list[0])
+                counter = 0
+                cnt = 1
+                del list[0]
             else:
-                listRes.insert(0, list[counter])
-        counter += 1
-if len(list) > 1:
-    if list[len(list) - 1] != listRes[len(listRes) - 1]:
-        if list[len(list) - 1] == list[len(list) - 2]:
-            listRes.insert(len(listRes), list[len(list) - 1])
+                counter = 0
+                cnt = 1
+                del list[0]
+        elif len(list) == 1:
+            if cnt > 1:
+                listRes.insert(0, list[0])
+                counter = 0
+                cnt = 1
+                del list[0]
+            else:
+                del list[0]
 for i in listRes:
     print(i, end=' ')
 
