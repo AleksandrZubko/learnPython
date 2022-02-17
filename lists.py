@@ -19,9 +19,68 @@ print(b)
 '''
 Напишите программу, на вход которой подается одна строка с целыми числами. Программа должна вывести сумму этих чисел.
 Используйте метод split строки. 
-'''
+
 list = [int(i) for i in input().split()]
 sum = 0
 for i in list:
     sum += i
 print(sum)
+'''
+
+####################
+'''
+Напишите программу, на вход которой подаётся список чисел одной строкой. 
+Программа должна для каждого элемента этого списка вывести сумму двух его соседей. 
+Для элементов списка, являющихся крайними, одним из соседей считается элемент, находящий на противоположном конце этого списка. 
+Например, если на вход подаётся список "1 3 5 6 10", то на выход ожидается список "13 6 9 15 7" (без кавычек).
+Если на вход пришло только одно число, надо вывести его же.
+Вывод должен содержать одну строку с числами нового списка, разделёнными пробелом.
+
+list = [int(i) for i in input().split()]
+listRes = []
+counter = 0
+for i in list:
+    if len(list) == 1:
+        listRes.insert(counter, i)
+        break
+    elif counter == 0:
+        listRes.insert(counter, list[1] + list[len(list) - 1])
+    elif counter == len(list) - 1:
+        listRes.insert(counter, list[0] + list[len(list) - 2])
+    else:
+        listRes.insert(counter,list[counter - 1] + list[counter + 1])
+    counter += 1
+for i in listRes:
+    print(i, end=' ')
+'''
+####################
+'''
+Напишите программу, которая принимает на вход список чисел в одной строке и выводит на экран в одну строку значения, 
+которые встречаются в нём более одного раза.
+Для решения задачи может пригодиться метод sort списка.
+Выводимые числа не должны повторяться, порядок их вывода может быть произвольным.
+'''
+list = [int(i) for i in input().split()]
+list.sort();
+listRes = []
+counter = 0
+i = 0
+if len(list) != 1:
+    while counter < len(list) - 1:
+        if list[counter] == list[counter + 1]:
+            if len(listRes) > 0:
+                if listRes[len(listRes) - 1] != list[counter]:
+                    listRes.insert(len(listRes), list[counter])
+            else:
+                listRes.insert(0, list[counter])
+        counter += 1
+if len(list) > 1:
+    if list[len(list) - 1] != listRes[len(listRes) - 1]:
+        if list[len(list) - 1] == list[len(list) - 2]:
+            listRes.insert(len(listRes), list[len(list) - 1])
+for i in listRes:
+    print(i, end=' ')
+
+
+
+
