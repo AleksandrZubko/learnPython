@@ -71,7 +71,10 @@ for i in range(len(s)-1):
         cnt = 1
 print(res)
 '''
+
+'''
 students = ['Ivan', 'Masha', 'Sasha']
 students += ['Olga']
 students += 'Olga'
 print(students)
+'''
