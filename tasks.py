@@ -309,7 +309,7 @@ Sample Output:
 Спартак:2 0 0 2 0
 Зенит:2 1 0 1 3
 Локомотив:2 2 0 0 6
-'''
+
 
 n = int(input())
 counter = 0
@@ -353,3 +353,53 @@ for ind, val in s.items():
     s[ind][4] = val[1] * 3 + val[2]
     print(ind + ':' + str(val[0]) + ' ' + str(val[1]) + ' ' + str(val[2]) + ' ' + str(val[3]) + ' ' + str(val[4]))
 #print(s)
+'''
+#################
+'''
+Простейшая система проверки орфографии может быть основана на использовании списка известных слов.
+Если введённое слово не найдено в этом списке, оно помечается как "ошибка".
+Попробуем написать подобную систему.
+На вход программе первой строкой передаётся количество d известных нам слов, после чего на d 
+строках указываются эти слова. Затем передаётся количество l строк текста для проверки, после чего l строк текста.
+Выведите уникальные "ошибки" в произвольном порядке. Работу производите без учёта регистра.
+
+Sample Input:
+4
+champions
+we
+are
+Stepik
+3
+We are the champignons
+We Are The Champions
+Stepic
+
+Sample Output:
+stepic
+champignons
+the
+'''
+n = int(input())
+counter = 0
+s = set()
+while counter < n:
+    s.add(input().lower())
+    counter += 1
+counter = 0
+n = int(input())
+arr = []
+while counter < n:
+    arr += [input().lower().split(' ')]
+    counter += 1
+s1 = set()
+for i in arr:
+    for j in i:
+        s1.add(j)
+res = set()
+
+for x in s1:
+    if x not in s:
+            res.add(x)
+
+for a in res:
+    print(a)
